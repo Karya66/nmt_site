@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>НМТ-зошит</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F1F5FB;--grid:#DCE5F3;--ink:#14213D;--mute:#56627F;--card:#fff;--line:#C9D4E8;--hl:#FFD43B;--margin:#E2536B;--ok:#13875A;--bad:#C93A4D;--en:#2F6FED;--math:#0E9F8E;--ukr:#D9487F;--hist:#B8671A;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0E1525;--grid:#1A2540;--ink:#E7ECFA;--mute:#9AA6C4;--card:#162038;--line:#2A3857;--ok:#3CCB8D;--bad:#FF7A8A;--en:#6C9BFF;--math:#2CC7B4;--ukr:#FF7FB0;--hist:#E8A15A;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0E1525;--grid:#1A2540;--ink:#E7ECFA;--mute:#9AA6C4;--card:#162038;--line:#2A3857;--ok:#3CCB8D;--bad:#FF7A8A;--en:#6C9BFF;--math:#2CC7B4;--ukr:#FF7FB0;--hist:#E8A15A;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font:400 1.0625rem/1.6 Onest,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper) linear-gradient(var(--grid) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/24px 24px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:10}
+h1,h2,h3{font-family:Unbounded,Onest,system-ui,sans-serif;line-height:1.2;margin:0 0 .6em}
+h1{font-size:clamp(1.6rem,5vw,2.6rem)}h2{font-size:1.25rem}h3{font-size:1.05rem}
+a{color:inherit}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--paper);border-bottom:2px solid var(--ink)}
+.bar-in{max-width:960px;margin:0 auto;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font:700 1.1rem Unbounded,sans-serif;text-decoration:none}
+nav{display:flex;gap:.4rem}
+nav a{padding:.35rem .8rem;border-radius:999px;text-decoration:none;font-weight:600}
+nav a.act{background:var(--hl);color:#14213D}
+main{max-width:960px;margin:0 auto;padding:1.5rem 1rem 4rem}
+.hero{background:var(--card);border:2px solid var(--ink);border-left:10px solid var(--margin);border-radius:6px;padding:1.5rem;margin-bottom:1.5rem}
+.hero p{max-width:60ch;margin:0 0 1rem;color:var(--mute)}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;margin-bottom:1rem}
+.mute{color:var(--mute)}
+.btn{display:inline-block;font:600 1rem Onest,sans-serif;background:var(--ink);color:var(--paper);border:2px solid var(--ink);border-radius:6px;padding:.6rem 1.1rem;cursor:pointer;text-decoration:none}
+.btn.on{background:var(--hl);color:#14213D}
+.btn:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--en);outline-offset:2px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.chip{display:inline-block;font-size:.85rem;font-weight:600;padding:.1rem .6rem;border:1.5px solid var(--c,var(--ink));border-radius:999px}
+.bar{height:12px;border:2px solid var(--ink);border-radius:999px;background:var(--card);overflow:hidden}
+.bar i{display:block;height:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.card{display:block;text-decoration:none;background:var(--card);border:2px solid var(--ink);border-top:10px solid var(--c);border-radius:6px;padding:1rem 1.1rem}
+.card:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--c)}
+.card p{margin:.2rem 0 .7rem;color:var(--mute)}
+.list a{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;background:var(--card);border:2px solid var(--ink);border-left:10px solid var(--c);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:.7rem;text-decoration:none;font-weight:600}
+.list a:hover{box-shadow:4px 4px 0 var(--c)}
+.back{display:inline-block;margin-bottom:1rem;font-weight:600}
+.notes{background:var(--card);border:2px solid var(--ink);border-left:10px solid var(--margin);border-radius:6px;padding:1.2rem 1.4rem;margin-bottom:1.2rem}
+.notes p,.notes li{max-width:70ch}
+.notes mark{background:var(--hl);color:#14213D;padding:0 .25em;border-radius:3px}
+.notes h3{margin-top:1.2em}
+.notes b{background:linear-gradient(transparent 60%,var(--hl) 60%);color:inherit}
+.notes .w{font-weight:600}
+h2.t{margin-top:2rem}
+fieldset{background:var(--card);border:2px solid var(--ink);border-radius:6px;margin:0 0 1rem;padding:.8rem 1rem}
+legend{font-weight:600;padding:0 .4rem}
+.opt{display:flex;gap:.6rem;align-items:center;padding:.45rem .6rem;border:2px solid transparent;border-radius:6px;cursor:pointer}
+.opt:hover{background:var(--grid)}
+.opt input{accent-color:var(--ink);width:1.1rem;height:1.1rem}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,transparent)}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,transparent)}
+#out{font-weight:600;margin-top:1rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1.5rem}
+.stat{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:.8rem 1rem}
+.stat b{display:block;font:700 1.8rem Unbounded,sans-serif}
+.panel{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:1rem 1.2rem;margin-bottom:1.5rem}
+.srow{display:grid;grid-template-columns:minmax(120px,1fr) 2fr;gap:.4rem 1rem;align-items:center;margin-bottom:1rem}
+.srow small{color:var(--mute);display:block}
+.chart{display:flex;gap:8px;align-items:stretch;height:200px;overflow-x:auto}
+.chart div{flex:1;min-width:36px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;font-size:.75rem;color:var(--mute)}
+.chart i{display:block;width:100%;min-height:3px;background:var(--en);border:2px solid var(--ink);border-bottom:0;border-radius:4px 4px 0 0}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{text-align:left;padding:.4rem .5rem;border-bottom:1px solid var(--line)}
+.wrapx{overflow-x:auto}
+@media (max-width:520px){.srow{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="bar-in"><a class="brand" href="#/">НМТ-зошит</a><nav><a href="#/" data-n="home">Теми</a><a href="#/p" data-n="p">Прогрес</a></nav></div></header>
+<main id="app"></main>
+<script>
+const SUBJ={en:['Англійська мова','--en'],math:['Математика','--math'],ukr:['Українська мова','--ukr'],hist:['Історія України','--hist']};
+const T=[
+{id:'en1',s:'en',t:'Present Simple і Present Continuous',n:`<h3>Present Simple</h3><p>Регулярні дії, факти, розклад. Сигнали: <mark>always, usually, often, every day</mark>.</p><p>Форма: V (+ <b>-s/-es</b> для he/she/it). <span class="w">She works. Water boils at 100°C.</span></p><h3>Present Continuous</h3><p>Дія відбувається зараз або тимчасово. Сигнали: <mark>now, at the moment, today, look!</mark></p><p>Форма: am/is/are + V-ing. <span class="w">He is reading now.</span></p><p>Стативні дієслова (know, like, love, want) у Continuous зазвичай не вживаються.</p>`,q:[['She ___ to school every day.','goes','is going','go','going'],['Look! It ___ now.','is raining','rains','rain','raining'],['Water ___ at 100°C.','boils','is boiling','boil','boiled']]},
+{id:'en2',s:'en',t:'Умовні речення (Zero, First, Second)',n:`<h3>Zero Conditional</h3><p>Загальні факти: <mark>If + Present Simple, Present Simple</mark>.</p><p class="w">If you heat ice, it melts.</p><h3>First Conditional</h3><p>Реальна ситуація в майбутньому: <mark>If + Present Simple, will + V</mark>.</p><p class="w">If it rains, we will stay at home.</p><h3>Second Conditional</h3><p>Нереальна або малоймовірна ситуація: <mark>If + Past Simple, would + V</mark>.</p><p class="w">If I had a million dollars, I would travel the world.</p><p>Після <b>if</b> не вживаємо will/would.</p>`,q:[['If it rains tomorrow, we ___ at home.','will stay','would stay','stayed','have stayed'],['If I ___ a million dollars, I would travel the world.','had','have','will have','would have'],['If you heat ice, it ___.','melts','would melt','melted','melting']]},
+{id:'m1',s:'math',t:'Квадратні рівняння',n:`<p>Рівняння виду <mark>ax² + bx + c = 0</mark>, де a ≠ 0.</p><h3>Дискримінант</h3><p>D = b² − 4ac</p><ul><li>D &gt; 0: два корені, x = (−b ± √D) / 2a</li><li>D = 0: один корінь, x = −b / 2a</li><li>D &lt; 0: коренів немає</li></ul><h3>Теорема Вієта</h3><p>Для x² + px + q = 0: x₁ + x₂ = −p, x₁ · x₂ = q.</p><p class="w">Приклад: x² − 5x + 6 = 0, D = 25 − 24 = 1, x = (5 ± 1) / 2, тобто 2 і 3.</p>`,q:[['Чому дорівнює дискримінант рівняння x² − 5x + 6 = 0?','1','49','11','−1'],['Яка сума коренів рівняння x² − 7x + 10 = 0?','7','−7','10','3'],['Скільки коренів має рівняння x² + 4x + 5 = 0?','Жодного','Один','Два','Три']]},
+{id:'m2',s:'math',t:'Відсотки',n:`<p>1% — це одна сота частина числа, тобто 0,01.</p><ul><li>Відсоток від числа: <mark>a · p / 100</mark></li><li>Число за його відсотком: <mark>b · 100 / p</mark></li><li>Збільшити на p%: a · (1 + p/100)</li><li>Зменшити на p%: a · (1 − p/100)</li></ul><p class="w">Приклад: 15% від 200 = 200 · 0,15 = 30.</p>`,q:[['Скільки становить 20% від 150?','30','20','75','7,5'],['Знайдіть число, 25% якого дорівнюють 15.','60','3,75','37,5','40'],['Ціна 400 грн зросла на 10%. Яка нова ціна?','440 грн','410 грн','404 грн','360 грн']]},
+{id:'u1',s:'ukr',t:'Правопис «не» з різними частинами мови',n:`<ul><li>З дієсловами <mark>окремо</mark>: не знаю, не читати.</li><li>Винятки (разом): <span class="w">нездужати, невзлюбити, ненавидіти, недолюблювати, неволити, нехтувати</span>.</li><li>З іменниками, прикметниками, прислівниками <mark>разом</mark>, якщо слово не вживається без «не» (невдача, невпевнений) або має синонім (неправда — брехня).</li><li>Окремо, якщо є протиставлення з «а»: <span class="w">не радість, а горе</span>; а також при підсиленні заперечення: зовсім не легкий.</li></ul>`,q:[['Яке слово пишеться разом?','нездужати','не читати','не бачити','не знати'],['Яке слово пишеться окремо?','не знаю','невдача','ненавидіти','неправда'],['Як правильно записати речення?','Це не радість, а горе','Це нерадість, а горе','Це не-радість, а горе']]},
+{id:'u2',s:'ukr',t:'Наголос (орфоепія)',n:`<p>Наголос в українській мові вільний і рухомий, тому правильні форми потрібно <mark>запам’ятовувати</mark>. Велика літера позначає наголошений склад:</p><ul><li>Перший склад: <span class="w">пЕрепис, фАртух, тАксі</span></li><li>Другий склад: <span class="w">красИвий, завдАння</span></li><li>Інші склади: <span class="w">алфавІт, квартАл, каталОг, одинАдцять, щавЕль</span></li></ul>`,q:[['Яке слово наголошене на останньому складі?','алфавіт','завдання','перепис','красивий'],['Яке слово наголошене на першому складі?','перепис','квартал','каталог','одинадцять'],['У якому слові наголос падає на другий склад?','красивий','таксі','фартух','перепис']]},
+{id:'h1',s:'hist',t:'Київська Русь',n:`<ul><li><mark>882</mark> — князь Олег об’єднав Київ і Новгород, столицею стає Київ.</li><li><mark>988</mark> — хрещення Русі за князя Володимира Великого.</li><li><mark>1019–1054</mark> — княжіння Ярослава Мудрого: «Руська правда», будівництво Софійського собору (1037), розквіт держави.</li><li><mark>1113–1125</mark> — Володимир Мономах, «Повчання дітям».</li></ul><p>Наприкінці XI — у XII ст. Русь поступово роздробилася на окремі князівства.</p>`,q:[['У якому році відбулося хрещення Русі?','988','882','1037','1113'],['Хто об’єднав Київ і Новгород у 882 р.?','Олег','Ігор','Святослав','Володимир'],['З ім’ям якого князя пов’язана «Руська правда»?','Ярослава Мудрого','Володимира Мономаха','Святослава Хороброго','Ігоря']]},
+{id:'h2',s:'hist',t:'Українська революція 1917–1921',n:`<ul><li><mark>Березень 1917</mark> — створення Центральної Ради, голова — Михайло Грушевський.</li><li><mark>22 січня 1918</mark> — IV Універсал проголосив незалежність УНР.</li><li><mark>Квітень–грудень 1918</mark> — Гетьманат Павла Скоропадського.</li><li><mark>Листопад 1918</mark> — утворення ЗУНР; створення Директорії УНР.</li><li><mark>22 січня 1919</mark> — Акт Злуки УНР і ЗУНР.</li></ul>`,q:[['Хто очолив Центральну Раду?','Михайло Грушевський','Симон Петлюра','Павло Скоропадський','Володимир Винниченко'],['Яким документом проголошено незалежність УНР?','IV Універсал','I Універсал','III Універсал','Акт Злуки'],['Коли відбулася Злука УНР і ЗУНР?','22 січня 1919 р.','22 січня 1918 р.','29 квітня 1918 р.','1 листопада 1918 р.']]}
+];
+let st={done:{},res:[]};
+try{const r=localStorage.getItem('nmt-v1');if(r)st=JSON.parse(r)}catch(e){}
+const save=()=>{try{localStorage.setItem('nmt-v1',JSON.stringify(st))}catch(e){}};
+const app=document.getElementById('app');
+const pct=(a,b)=>b?Math.round(a/b*100):0;
+const avg=a=>a.length?Math.round(a.reduce((x,y)=>x+y,0)/a.length):null;
+const tIn=s=>T.filter(t=>t.s===s);
+const tOf=id=>T.find(t=>t.id===id);
+const resOf=s=>st.res.filter(r=>tOf(r.id)&&tOf(r.id).s===s);
+const bar=(v,c)=>`<div class="bar" role="img" aria-label="${v}%"><i style="width:${v}%;background:var(${c||'--ink'})"></i></div>`;
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const best=id=>{const r=st.res.filter(x=>x.id===id).map(x=>x.p);return r.length?Math.max(...r):null};
+
+function home(){
+  const total=T.length,d=T.filter(t=>st.done[t.id]).length,nxt=T.find(t=>!st.done[t.id]);
+  app.innerHTML=`<section class="hero"><h1>Готуйся до НМТ крок за кроком</h1><p>Читай конспект, проходь тест після кожної теми й стеж за своїм прогресом.</p><div class="row">${nxt?`<a class="btn" href="#/t/${nxt.id}">${d?'Продовжити':'Почати'}: ${nxt.t}</a>`:'<span class="chip">Усі теми опрацьовано</span>'}<span class="mute">Опрацьовано ${d} із ${total} тем</span></div>${bar(pct(d,total))}</section>
+  <div class="grid">${Object.keys(SUBJ).map(s=>{const ts=tIn(s),dn=ts.filter(t=>st.done[t.id]).length,a=avg(resOf(s).map(r=>r.p));
+    return `<a class="card" href="#/s/${s}" style="--c:var(${SUBJ[s][1]})"><h2>${SUBJ[s][0]}</h2><p>Опрацьовано ${dn} із ${ts.length}${a===null?'':' · середній бал '+a+'%'}</p>${bar(pct(dn,ts.length),SUBJ[s][1])}</a>`}).join('')}</div>`;
+}
+function subject(s){
+  if(!SUBJ[s])return home();
+  app.innerHTML=`<a class="back" href="#/">‹ Усі предмети</a><h1>${SUBJ[s][0]}</h1><div class="list" style="--c:var(${SUBJ[s][1]})">${tIn(s).map(t=>{const b=best(t.id);return `<a href="#/t/${t.id}"><span>${t.t}</span><span>${st.done[t.id]?'<span class="chip">опрацьовано</span> ':''}${b!==null?`<span class="chip">найкращий тест: ${b}%</span>`:'<span class="chip mute">тест не пройдено</span>'}</span></a>`}).join('')}</div>`;
+}
+function topic(id){
+  const t=tOf(id);if(!t)return home();
+  const ord=t.q.map(q=>shuffle(q.slice(1).map((o,i)=>[o,i])));
+  const lbl=()=>st.done[id]?'Опрацьовано ✓':'Позначити як опрацьовану';
+  app.innerHTML=`<a class="back" href="#/s/${t.s}">‹ ${SUBJ[t.s][0]}</a><h1>${t.t}</h1><article class="notes">${t.n}</article><button class="btn ${st.done[id]?'on':''}" id="dn">${lbl()}</button>
+  <h2 class="t">Тест для самоперевірки</h2><div id="quiz">${t.q.map((q,i)=>`<fieldset><legend>${i+1}. ${q[0]}</legend>${ord[i].map(([o,v])=>`<label class="opt"><input type="radio" name="q${i}" value="${v}"> ${o}</label>`).join('')}</fieldset>`).join('')}</div>
+  <button class="btn" id="chk">Перевірити відповіді</button><p id="out" role="status"></p>`;
+  const dn=document.getElementById('dn');
+  dn.onclick=()=>{st.done[id]=!st.done[id];if(!st.done[id])delete st.done[id];save();dn.textContent=lbl();dn.classList.toggle('on',!!st.done[id])};
+  const chk=document.getElementById('chk'),out=document.getElementById('out');
+  chk.onclick=()=>{
+    const sel=t.q.map((_,i)=>app.querySelector(`input[name=q${i}]:checked`));
+    if(sel.some(x=>!x)){out.textContent='Відповідь потрібна на кожне запитання.';return}
+    let sc=0;
+    sel.forEach((inp,i)=>{
+      const ok=inp.value==='0';if(ok)sc++;
+      app.querySelectorAll(`input[name=q${i}]`).forEach(r=>{r.disabled=true;if(r.value==='0')r.parentNode.classList.add('ok')});
+      if(!ok)inp.parentNode.classList.add('bad');
+    });
+    const p=pct(sc,t.q.length);
+    st.res.push({id,p,s:sc,n:t.q.length,d:Date.now()});save();
+    chk.remove();
+    out.innerHTML=`Результат: ${sc} з ${t.q.length} (${p}%). Правильні відповіді виділено зеленим.<br><br><button class="btn ghost" id="again">Пройти ще раз</button> <a class="btn" href="#/p">Мій прогрес</a>`;
+    document.getElementById('again').onclick=()=>topic(id);
+  };
+}
+function progress(){
+  const d=T.filter(t=>st.done[t.id]).length,all=st.res.map(r=>r.p),a=avg(all);
+  const last=st.res.slice(-10);
+  app.innerHTML=`<h1>Мій прогрес</h1>
+  <div class="stats"><div class="stat"><b>${d}/${T.length}</b>тем опрацьовано</div><div class="stat"><b>${st.res.length}</b>тестів пройдено</div><div class="stat"><b>${a===null?'—':a+'%'}</b>середній результат</div><div class="stat"><b>${all.length?Math.max(...all)+'%':'—'}</b>найкращий результат</div></div>
+  <div class="panel"><h2>За предметами</h2>${Object.keys(SUBJ).map(s=>{const ts=tIn(s),dn=ts.filter(t=>st.done[t.id]).length,r=resOf(s).map(x=>x.p),av=avg(r);
+    return `<div class="srow"><div><b>${SUBJ[s][0]}</b><small>Тестів: ${r.length}</small></div><div>${bar(pct(dn,ts.length),SUBJ[s][1])}<small class="mute">Теми: ${dn} із ${ts.length}</small>${bar(av||0,SUBJ[s][1])}<small class="mute">Середній бал: ${av===null?'ще немає даних':av+'%'}</small></div></div>`}).join('')}</div>
+  <div class="panel"><h2>Останні результати тестів</h2>${last.length?`<div class="chart">${last.map(r=>`<div title="${tOf(r.id).t}"><i style="height:${Math.max(r.p,2)}%"></i>${r.p}%</div>`).join('')}</div>`:'<p class="mute">Пройди перший тест після теми, і тут з’явиться графік.</p>'}</div>
+  <div class="panel"><h2>Історія тестів</h2>${st.res.length?`<div class="wrapx"><table><thead><tr><th>Дата</th><th>Тема</th><th>Бали</th><th>%</th></tr></thead><tbody>${st.res.slice().reverse().slice(0,20).map(r=>`<tr><td>${new Date(r.d).toLocaleDateString('uk-UA')}</td><td>${tOf(r.id).t}</td><td>${r.s}/${r.n}</td><td>${r.p}%</td></tr>`).join('')}</tbody></table></div>`:'<p class="mute">Історія порожня.</p>'}</div>
+  <button class="btn ghost" id="rst">Скинути весь прогрес</button>`;
+  const b=document.getElementById('rst');let armed=false;
+  b.onclick=()=>{if(!armed){armed=true;b.textContent='Натисни ще раз, щоб підтвердити';return}st={done:{},res:[]};save();progress()};
+}
+function route(){
+  const h=location.hash.replace(/^#\/?/,'').split('/');
+  if(h[0]==='s')subject(h[1]);else if(h[0]==='t')topic(h[1]);else if(h[0]==='p')progress();else home();
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('act',a.dataset.n===(h[0]==='p'?'p':'home')));
+  window.scrollTo(0,0);
+}
+addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>
